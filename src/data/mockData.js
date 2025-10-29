@@ -15,11 +15,15 @@ const propertyImagePool = [
   'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
 ];
 
+const projectNamePool = [
+  'The Pearl Residences', 'Azure Heights', 'Oasis Gardens', 'Golden Sands Tower', 'Marina Bay Living', 'Skyline Apartments', 'Emerald Villas', 'Palm View Estates', 'Coral Reef Towers', 'Al Khuwair Suites', 'Muscat Hills', 'Shatti Al Qurum Residences', 'Bawshar Sands', 'The Wave Apartments'
+];
+
 const createProperty = () => ({
   id: faker.string.uuid(),
   code: `PROP-${faker.number.int({ min: 1000, max: 9999 })}`,
   developer: faker.company.name(),
-  project: faker.commerce.productName(),
+  project: faker.helpers.arrayElement(projectNamePool),
   location: `${faker.location.city()}`,
   country: faker.location.country(),
   price: faker.finance.amount({ min: 100000, max: 1000000, dec: 0 }),
@@ -30,7 +34,7 @@ const createProperty = () => ({
   status: faker.helpers.arrayElement(['Available', 'Booked', 'Sold']),
   imageUrl: faker.helpers.arrayElement(propertyImagePool),
   gallery: faker.helpers.arrayElements(propertyImagePool, 5),
-  floorPlanUrl: `https://img-wrapper.vercel.app/image?url=https://placehold.co/800x600/EEE/31343C?text=Floor+Plan`,
+  floorPlanUrl: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/800x600/EEE/31343C?text=Floor+Plan`,
   description: faker.lorem.paragraphs(3),
   bedrooms: faker.number.int({ min: 1, max: 6 }),
   bathrooms: faker.number.int({ min: 1, max: 5 }),
