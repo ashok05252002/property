@@ -28,7 +28,7 @@ const Home = () => {
     return (
         <div className="space-y-24">
             {/* Hero Section */}
-            <section className="relative h-[70vh] bg-cover bg-center flex items-center justify-center text-white" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1992&auto=format&fit=crop')" }}>
+            <section className="relative h-[70vh] bg-cover bg-center flex items-center justify-center text-white" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')" }}>
                 <div className="absolute inset-0 bg-black/60"></div>
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}

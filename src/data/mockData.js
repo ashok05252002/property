@@ -1,5 +1,20 @@
 import { faker } from '@faker-js/faker';
 
+const propertyImagePool = [
+  'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1605146769289-440113cc3d00?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1628744448845-a7581b3a5a73?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
+];
+
 const createProperty = () => ({
   id: faker.string.uuid(),
   code: `PROP-${faker.number.int({ min: 1000, max: 9999 })}`,
@@ -13,9 +28,9 @@ const createProperty = () => ({
   area: faker.number.int({ min: 80, max: 500 }),
   type: faker.helpers.arrayElement(['Villa', 'Apartment', 'Townhouse', 'Penthouse']),
   status: faker.helpers.arrayElement(['Available', 'Booked', 'Sold']),
-  imageUrl: `https://picsum.photos/seed/${faker.string.alphanumeric(10)}/400/300`,
-  gallery: Array.from({ length: 5 }, () => `https://picsum.photos/seed/${faker.string.alphanumeric(10)}/800/600`),
-  floorPlanUrl: `https://picsum.photos/seed/${faker.string.alphanumeric(10)}/800/600`,
+  imageUrl: faker.helpers.arrayElement(propertyImagePool),
+  gallery: faker.helpers.arrayElements(propertyImagePool, 5),
+  floorPlanUrl: `https://img-wrapper.vercel.app/image?url=https://placehold.co/800x600/EEE/31343C?text=Floor+Plan`,
   description: faker.lorem.paragraphs(3),
   bedrooms: faker.number.int({ min: 1, max: 6 }),
   bathrooms: faker.number.int({ min: 1, max: 5 }),
